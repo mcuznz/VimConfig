@@ -1,0 +1,6 @@
+[submodule "powerline"]
+	path = powerline
+	url = git@github.com:Lokaltog/powerline.git
+[submodule "home/.vim/bundle/vundle"]
+	path = home/.vim/bundle/vundle
+	url = git@github.com:gmarik/vundle.git
