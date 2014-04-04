@@ -199,7 +199,7 @@ let g:UltiSnipsSnippetsDir = $HOME . "/.vim/snippets"
 let g:UltiSnipsSnippetDirectories = ["mysnippets", "templates_snip"]
 
 " Powerline settings
-set rtp+=~/.homesick/repos/dotfiles/powerline/powerline/bindings/vim
+set rtp+=~/.homesick/repos/VimConfig/powerline/powerline/bindings/vim
 let g:Powerline_symbols = 'fancy'
 let g:powerline_config_overrides = { 'ext': { 'vim': { 'colorscheme': 'solarized' }}}
 
