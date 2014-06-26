@@ -1,8 +1,9 @@
 " Delete all auto commands (needed to auto source .vimrc after saving)
 autocmd!
 
-:set mouse=a
-:set nocompatible
+set mouse=a
+set nocompatible
+set shell=/bin/sh
 
 " required by Vundle!
 filetype off
@@ -30,7 +31,7 @@ Bundle "tobyS/skeletons.vim"
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'embear/vim-localvimrc'
-Bundle 'joonty/vdebug'
+" Bundle 'joonty/vdebug'
 Bundle 'joonty/vim-phpunitqf'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-unimpaired'
@@ -56,7 +57,7 @@ autocmd InsertEnter * set cursorline
 
 " Set the hidden option to enable moving through args and buffers without
 " saving them first
-set hidden
+ set hidden
 
 " Show line numbers by default
 set number
@@ -190,6 +191,7 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
+let g:syntastic_java_javac_config_file_enabled=1
 
 " Ultisnips settings
 let g:UltiSnipsExpandTrigger = "<leader><Tab>"
@@ -210,3 +212,13 @@ let g:vim_json_syntax_conceal = 0
 function! TrimWhiteSpace()
 	%s/\s\+$//e
 endfunction
+
+function! My_TabComplete()
+	let substr = strpart(getline('.'), col('.'))
+	let result = match(substr, '\w\+\(\.\w*\)$')
+	if (result!=-1)
+		return "\<C-X>\<C-U>"
+	else
+		return "\<tab>"
+endfunction
+autocmd FileType java inoremap <tab> <C-R>=My_TabComplete()<CR>
